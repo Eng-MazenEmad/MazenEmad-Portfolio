@@ -1925,28 +1925,19 @@
     <script>
       // ====== EMAIL BUTTONS ======
       function openGmailCompose(event, subject) {
-        const to = "mazenemad10000@gmail.com";
-        const su = encodeURIComponent(subject || "");
-        const webUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${to}&su=${su}`;
         const isMobile = /Android|iPhone|iPad|iPod/i.test(
           navigator.userAgent,
         );
-
         if (!isMobile) {
-          return true; // let the normal href (webUrl) handle desktop
+          return true; // let the normal href (Gmail web link) handle desktop
         }
-
         event.preventDefault();
-        const appUrl = `googlegmail:///co?to=${to}&subject=${su}`;
-        const openedAt = Date.now();
-        window.location.href = appUrl;
-        setTimeout(() => {
-          if (Date.now() - openedAt < 1800 && !document.hidden) {
-            window.location.href = webUrl;
-          }
-        }, 1200);
+        const to = "mazenemad10000@gmail.com";
+        const su = encodeURIComponent(subject || "");
+        window.location.href = `mailto:${to}${su ? `?subject=${su}` : ""}`;
         return false;
       }
+      
       // ====== PROJECT DATA ======
       const categoryLabels = {
         all: "All",
