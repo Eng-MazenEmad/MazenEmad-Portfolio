@@ -1,0 +1,2473 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mazen Emad | Data Analyst & Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><style>.logo-mark{position:relative;display:flex;align-items:center;justify-content:center;width:100%25;height:100%25;background:linear-gradient(135deg, %23113835, transparent);border:1px solid rgba(62, 201, 176, 0.22);border-radius:18px;}.logo-text{font-family:monospace;font-weight:600;font-size:38px;color:%233ec9b0;letter-spacing:-0.5px;}</style><foreignObject width=%22100%25%22 height=%22100%25%22><div xmlns=%22http://www.w3.org/1999/xhtml%22 class=%22logo-mark%22><span class=%22logo-text%22>ME</span></div></foreignObject></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:opsz,wght@14..32,400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <style>
+      :root {
+        --bg: #0a0d12;
+        --bg-alt: #0f1319;
+        --surface: #141a22;
+        --surface-2: #191f28;
+        --border: rgba(255, 255, 255, 0.07);
+        --border-strong: rgba(255, 255, 255, 0.14);
+        --text-hi: #eef1f6;
+        --text-mid: #98a2b3;
+        --text-lo: #5a6472;
+        --amber: #eba750;
+        --amber-soft: rgba(235, 167, 80, 0.14);
+        --teal: #3ec9b0;
+        --teal-soft: rgba(62, 201, 176, 0.14);
+      }
+      * {
+        scroll-behavior: smooth;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Inter", system-ui, sans-serif;
+        background:
+          linear-gradient(var(--bg), var(--bg)),
+          repeating-linear-gradient(
+            0deg,
+            rgba(255, 255, 255, 0.028) 0px,
+            rgba(255, 255, 255, 0.028) 1px,
+            transparent 1px,
+            transparent 64px
+          ),
+          repeating-linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.028) 0px,
+            rgba(255, 255, 255, 0.028) 1px,
+            transparent 1px,
+            transparent 64px
+          );
+        color: var(--text-mid);
+      }
+      h1,
+      h2,
+      h3,
+      h4,
+      .font-display {
+        font-family: "Space Grotesk", sans-serif;
+      }
+      .font-mono {
+        font-family: "JetBrains Mono", monospace;
+      }
+
+      ::-webkit-scrollbar {
+        width: 7px;
+        background: var(--bg);
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #212a35;
+        border-radius: 12px;
+      }
+
+      /* ===== Scroll progress ===== */
+      #scrollProgress {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 2px;
+        width: 0%;
+        background: linear-gradient(90deg, var(--teal), var(--amber));
+        z-index: 60;
+        transition: width 0.08s linear;
+      }
+
+      .glass {
+        background: rgba(15, 19, 25, 0.72);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        border: 1px solid var(--border);
+      }
+      .panel {
+        background: var(--surface);
+        border: 1px solid var(--border);
+      }
+
+      .glow-card {
+        transition:
+          border-color 0.35s ease,
+          transform 0.35s ease;
+      }
+      .glow-card:hover {
+        transform: translateY(-3px);
+        border-color: var(--border-strong);
+      }
+
+      .status-dot {
+        display: inline-block;
+        width: 7px;
+        height: 7px;
+        background: var(--teal);
+        border-radius: 50%;
+        margin-right: 7px;
+        box-shadow: 0 0 10px rgba(62, 201, 176, 0.6);
+        animation: pulse-dot 2.4s infinite;
+      }
+      @keyframes pulse-dot {
+        0%,
+        100% {
+          opacity: 0.55;
+        }
+        50% {
+          opacity: 1;
+        }
+      }
+
+      .filter-btn {
+        transition: all 0.2s;
+        border: 1px solid transparent;
+        font-family: "JetBrains Mono", monospace;
+        letter-spacing: 0.01em;
+      }
+      .filter-btn:hover {
+        border-color: var(--border-strong);
+      }
+      .tab-active {
+        background: var(--teal-soft);
+        color: var(--teal);
+        border-color: rgba(62, 201, 176, 0.35) !important;
+      }
+
+      .metric-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+      }
+
+      .photo-frame {
+        transition:
+          transform 0.5s cubic-bezier(0.23, 1, 0.32, 1),
+          box-shadow 0.5s;
+      }
+      .photo-frame:hover {
+        box-shadow: 0 24px 48px -18px rgba(0, 0, 0, 0.65);
+      }
+
+      .axis-frame {
+        position: relative;
+      }
+      .axis-frame::before,
+      .axis-frame::after {
+        content: "";
+        position: absolute;
+        width: 14px;
+        height: 14px;
+        border-color: var(--teal);
+        opacity: 0.55;
+      }
+      .axis-frame::before {
+        top: -6px;
+        left: -6px;
+        border-top: 1.5px solid;
+        border-left: 1.5px solid;
+      }
+      .axis-frame::after {
+        bottom: -6px;
+        right: -6px;
+        border-bottom: 1.5px solid;
+        border-right: 1.5px solid;
+      }
+
+      .detail-section {
+        display: none;
+      }
+      .detail-section.active {
+        display: block;
+      }
+      .back-btn {
+        transition: all 0.2s;
+      }
+      .back-btn:hover {
+        background: rgba(255, 255, 255, 0.04);
+        border-color: var(--border-strong);
+      }
+
+      /* ===== LOGO ===== */
+      .logo-container {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        text-decoration: none;
+      }
+      .logo-mark {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background: linear-gradient(135deg, var(--teal-soft), transparent);
+        border: 1px solid rgba(62, 201, 176, 0.22);
+        border-radius: 10px;
+        transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+        flex-shrink: 0;
+      }
+      .logo-mark:hover {
+        border-color: rgba(62, 201, 176, 0.4);
+        box-shadow: 0 0 30px rgba(62, 201, 176, 0.1);
+      }
+      .logo-text {
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 600;
+        font-size: 13px;
+        color: var(--teal);
+        letter-spacing: -0.5px;
+      }
+      .logo-brand {
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 600;
+        font-size: 1rem;
+        letter-spacing: -0.01em;
+        color: var(--text-hi);
+      }
+      .logo-brand span {
+        color: var(--text-lo);
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 400;
+        font-size: 0.65rem;
+        letter-spacing: 0.06em;
+        margin-left: 6px;
+        border-left: 1px solid var(--border);
+        padding-left: 8px;
+      }
+      .logo-mark-sm {
+        width: 30px;
+        height: 30px;
+      }
+
+      /* ===== About stats ===== */
+      .about-stat {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 0.9rem;
+        padding: 1.1rem 1rem;
+        transition: all 0.3s;
+      }
+      .about-stat:hover {
+        border-color: rgba(235, 167, 80, 0.3);
+      }
+      .about-stat .number {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 1.65rem;
+        font-weight: 600;
+        color: var(--amber);
+        letter-spacing: -0.01em;
+      }
+      .about-stat .label {
+        font-size: 0.72rem;
+        color: var(--text-mid);
+        margin-top: 0.2rem;
+      }
+      .about-stat .sub {
+        font-size: 0.68rem;
+        color: var(--text-lo);
+        margin-top: 0.1rem;
+      }
+
+      /* ===== Skill bars ===== */
+      .skill-row {
+        margin-bottom: 0.85rem;
+      }
+      .skill-row:last-child {
+        margin-bottom: 0;
+      }
+      .skill-row .track {
+        height: 5px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 999px;
+        overflow: hidden;
+        margin-top: 0.35rem;
+      }
+      .skill-row .fill {
+        height: 100%;
+        width: 0%;
+        border-radius: 999px;
+        transition: width 1.1s cubic-bezier(0.16, 1, 0.3, 1);
+        background: linear-gradient(90deg, var(--teal), var(--amber));
+      }
+      .skill-row .name {
+        font-size: 0.82rem;
+        color: var(--text-hi);
+      }
+      .skill-row .pct {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.7rem;
+        color: var(--text-lo);
+      }
+
+      .category-title {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.68rem;
+        letter-spacing: 0.04em;
+        color: var(--text-lo);
+        margin-bottom: 0.9rem;
+        display: block;
+        border-bottom: 1px solid var(--border);
+        padding-bottom: 0.5rem;
+      }
+
+      .cv-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: var(--amber-soft);
+        border: 1px solid rgba(235, 167, 80, 0.3);
+        color: var(--amber);
+        padding: 0.6rem 1.4rem;
+        border-radius: 999px;
+        font-size: 0.85rem;
+        font-weight: 500;
+        transition: all 0.3s;
+        cursor: pointer;
+      }
+      .cv-btn:hover {
+        background: rgba(235, 167, 80, 0.16);
+        border-color: rgba(235, 167, 80, 0.4);
+        box-shadow: 0 6px 16px -6px rgba(235, 167, 80, 0.2);
+      }
+
+      /* ===== Neon buttons ===== */
+      .btn-neon {
+        position: relative;
+        transition:
+          transform 0.25s ease,
+          box-shadow 0.35s ease,
+          filter 0.35s ease;
+        box-shadow: 0 0 0 rgba(31, 156, 134, 0);
+      }
+      .btn-neon:hover {
+        transform: translateY(-2px);
+        box-shadow:
+          0 10px 24px -8px rgba(15, 30, 26, 0.55),
+          0 0 0 1px rgba(255, 255, 255, 0.06),
+          0 0 14px rgba(31, 156, 134, 0.18);
+        filter: brightness(1.02);
+      }
+      .btn-outline-neon {
+        transition: all 0.3s ease;
+      }
+      .btn-outline-neon:hover {
+        border-color: rgba(62, 201, 176, 0.55) !important;
+        color: var(--text-hi) !important;
+        box-shadow: 0 4px 14px -6px rgba(62, 201, 176, 0.18);
+        transform: translateY(-2px);
+      }
+      /* when paired with btn-trace, let the snake segment carry the highlight with only a faint ambient glow */
+      .btn-outline-neon.btn-trace:hover {
+        border-color: var(--border) !important;
+        color: var(--text-hi) !important;
+        box-shadow: 0 0 10px rgba(62, 201, 176, 0.1);
+        transform: translateY(-2px);
+      }
+      .icon-neon {
+        transition: all 0.3s ease;
+      }
+      .icon-neon:hover {
+        border-color: rgba(62, 201, 176, 0.55) !important;
+        box-shadow: 0 4px 12px -4px rgba(62, 201, 176, 0.2);
+        color: var(--teal);
+      }
+
+      /* ===== Mobile nav ===== */
+      #navLinks {
+        transition:
+          max-height 0.35s ease,
+          opacity 0.3s ease;
+      }
+      #mobileMenuBtn {
+        display: none;
+      }
+      @media (max-width: 860px) {
+        #mobileMenuBtn {
+          display: flex;
+        }
+        #navLinks {
+          position: absolute;
+          top: 100%;
+          left: 0;
+          right: 0;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 0;
+          background: var(--bg-alt);
+          border-bottom: 1px solid var(--border);
+          max-height: 0;
+          opacity: 0;
+          overflow: hidden;
+          padding: 0 1.5rem;
+        }
+        #navLinks.open {
+          max-height: 420px;
+          opacity: 1;
+          padding: 1rem 1.5rem 1.5rem;
+        }
+        #navLinks a {
+          width: 100%;
+          padding: 0.65rem 0;
+          border-bottom: 1px solid var(--border);
+        }
+        #navLinks .status-pill {
+          display: none;
+        }
+      }
+
+      /* ===== Hero gradient ===== */
+      #hero {
+        background:
+          radial-gradient(
+            ellipse 900px 500px at 15% 10%,
+            rgba(62, 201, 176, 0.16),
+            transparent 60%
+          ),
+          radial-gradient(
+            ellipse 700px 500px at 90% 25%,
+            rgba(235, 167, 80, 0.13),
+            transparent 55%
+          ),
+          radial-gradient(
+            ellipse 600px 400px at 50% 100%,
+            rgba(62, 201, 176, 0.06),
+            transparent 60%
+          );
+      }
+
+      /* ===== reveal ===== */
+      .reveal {
+        opacity: 0;
+        transform: translateY(32px);
+        transition:
+          opacity 0.7s cubic-bezier(0.23, 1, 0.32, 1),
+          transform 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+      }
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .reveal-left {
+        opacity: 0;
+        transform: translateX(-32px);
+        transition:
+          opacity 0.7s cubic-bezier(0.23, 1, 0.32, 1),
+          transform 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+      }
+      .reveal-left.visible {
+        opacity: 1;
+        transform: translateX(0);
+      }
+      .reveal-right {
+        opacity: 0;
+        transform: translateX(32px);
+        transition:
+          opacity 0.7s cubic-bezier(0.23, 1, 0.32, 1),
+          transform 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+      }
+      .reveal-right.visible {
+        opacity: 1;
+        transform: translateX(0);
+      }
+      .reveal-scale {
+        opacity: 0;
+        transform: scale(0.94);
+        transition:
+          opacity 0.7s cubic-bezier(0.23, 1, 0.32, 1),
+          transform 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+      }
+      .reveal-scale.visible {
+        opacity: 1;
+        transform: scale(1);
+      }
+      .stagger > * {
+        opacity: 0;
+        transform: translateY(26px);
+        transition:
+          opacity 0.6s cubic-bezier(0.23, 1, 0.32, 1),
+          transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+      }
+      .stagger.visible > *:nth-child(1) {
+        transition-delay: 0.05s;
+      }
+      .stagger.visible > *:nth-child(2) {
+        transition-delay: 0.11s;
+      }
+      .stagger.visible > *:nth-child(3) {
+        transition-delay: 0.17s;
+      }
+      .stagger.visible > *:nth-child(4) {
+        transition-delay: 0.23s;
+      }
+      .stagger.visible > *:nth-child(5) {
+        transition-delay: 0.29s;
+      }
+      .stagger.visible > *:nth-child(6) {
+        transition-delay: 0.35s;
+      }
+      .stagger.visible > * {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .accent-teal {
+        color: var(--teal);
+      }
+      .accent-amber {
+        color: var(--amber);
+      }
+
+      @media (max-width: 480px) {
+        #hero .grid.grid-cols-2 {
+          gap: 0.6rem;
+        }
+        .metric-card {
+          padding: 0.8rem 0.6rem;
+        }
+        .metric-card .text-2xl {
+          font-size: 1.25rem;
+        }
+      }
+
+      /* ===== Animated photo blob background ===== */
+      .photo-blob-outer {
+        position: relative;
+      }
+      /* Shape is intentionally static (no morph animation) so the
+         photo crop below can use this exact same border-radius value
+         permanently, with zero drift/mismatch risk. If you ever want
+         the background alive again, animate the inner .blob-layer /
+         .blob-layer-2 gradients instead of this element's own radius. */
+      .photo-blob-bg {
+        position: absolute;
+        inset: 0;
+        border-radius: 61% 39% 44% 56% / 54% 43% 57% 46%;
+        overflow: hidden;
+        background: #0a0d12;
+        border: 1px solid var(--border);
+        z-index: 0;
+      }
+      .photo-blob-bg .blob-layer {
+        position: absolute;
+        inset: -25%;
+        background:
+          radial-gradient(
+            circle at 28% 30%,
+            rgba(62, 201, 176, 0.95),
+            transparent 42%
+          ),
+          radial-gradient(
+            circle at 72% 62%,
+            rgba(235, 167, 80, 0.9),
+            transparent 44%
+          ),
+          radial-gradient(
+            circle at 42% 82%,
+            rgba(62, 201, 176, 0.75),
+            transparent 40%
+          ),
+          radial-gradient(
+            circle at 82% 18%,
+            rgba(235, 167, 80, 0.65),
+            transparent 38%
+          );
+        filter: blur(10px) saturate(1.3);
+      }
+      .photo-blob-bg .blob-layer-2 {
+        position: absolute;
+        inset: -30%;
+        background:
+          radial-gradient(
+            circle at 60% 25%,
+            rgba(235, 167, 80, 0.4),
+            transparent 36%
+          ),
+          radial-gradient(
+            circle at 20% 70%,
+            rgba(62, 201, 176, 0.4),
+            transparent 34%
+          );
+        filter: blur(16px) saturate(1.2);
+        mix-blend-mode: screen;
+      }
+      .photo-blob-bg .dot-grid {
+        position: absolute;
+        inset: -10%;
+        background-image: radial-gradient(
+          rgba(255, 255, 255, 0.14) 1px,
+          transparent 1px
+        );
+        background-size: 16px 16px;
+        opacity: 0.35;
+        mix-blend-mode: overlay;
+      }
+      .photo-blob-bg .wave-stripes {
+        position: absolute;
+        inset: -15%;
+        background: repeating-linear-gradient(
+          124deg,
+          rgba(62, 201, 176, 0.24) 0px,
+          rgba(62, 201, 176, 0.24) 1.5px,
+          transparent 1.5px,
+          transparent 17px,
+          rgba(235, 167, 80, 0.2) 17px,
+          rgba(235, 167, 80, 0.2) 18.5px,
+          transparent 18.5px,
+          transparent 34px
+        );
+        background-size: 160px 160px;
+      }
+      /* ===== Hero photo: ONE image, ONE clip-path =====
+         Earlier this was two separately-positioned <img> layers (a
+         "head" crop stacked on a "body" crop) lined up with a percentage
+         overlap. That overlap is computed independently for each layer,
+         so at some browser zoom levels the two roundings disagree by a
+         pixel and a sliver of background shows through the seam.
+         Fixing the overlap size only moves the problem to a different
+         zoom level rather than removing it.
+
+         This version uses a single image clipped by one combined SVG
+         shape (a rectangle for the head silhouette above the blob,
+         unioned with the blob's own curve below — see the <clipPath>
+         near the top of <body>). One element, one clip, computed in a
+         single layout pass — there is nothing left that can drift out
+         of alignment with anything else, at any zoom level. */
+      .photo-portrait {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 160%;
+        z-index: 2;
+        pointer-events: none;
+        clip-path: url(#heroPortraitClip);
+      }
+      .photo-portrait img {
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        transform: translateX(-50%);
+        width: 108%;
+        height: auto;
+        max-width: none;
+      }
+      .sparkle {
+        position: absolute;
+        z-index: 4;
+        pointer-events: none;
+        animation: twinkle 2.6s ease-in-out infinite;
+      }
+      .sparkle svg {
+        display: block;
+      }
+      .sparkle.s-teal {
+        color: var(--teal);
+      }
+      .sparkle.s-amber {
+        color: var(--amber);
+      }
+      .sparkle-dot {
+        position: absolute;
+        z-index: 4;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        animation: twinkle 2.2s ease-in-out infinite;
+      }
+      @keyframes twinkle {
+        0%,
+        100% {
+          opacity: 0.25;
+          transform: scale(0.75);
+        }
+        50% {
+          opacity: 1;
+          transform: scale(1.15);
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .sparkle,
+        .sparkle-dot {
+          animation: none !important;
+        }
+      }
+
+      /* ===== Nav underline sweep ===== */
+      .nav-link {
+        position: relative;
+        display: inline-block;
+      }
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -4px;
+        width: 100%;
+        height: 1.5px;
+        background: linear-gradient(90deg, var(--teal), var(--amber));
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.35s cubic-bezier(0.65, 0, 0.35, 1);
+      }
+      .nav-link:hover::after {
+        transform: scaleX(1);
+      }
+
+      /* ===== Snake trace border on hover (SVG pathLength technique, JS-sized) ===== */
+      .btn-trace {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        isolation: isolate;
+      }
+      svg.snake-outline {
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        margin: 0;
+        padding: 0;
+        pointer-events: none;
+        overflow: visible;
+        display: block;
+      }
+      .snake-outline rect {
+        fill: none;
+        stroke-width: 2.6px;
+        stroke-linecap: round;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        filter: drop-shadow(0 0 2px rgba(62, 201, 176, 0.75));
+      }
+      .btn-trace:hover .snake-outline rect {
+        opacity: 1;
+        animation: snakeDash 2.4s linear infinite;
+      }
+      .btn-trace:hover {
+        box-shadow: 0 0 10px rgba(62, 201, 176, 0.1);
+      }
+      @keyframes snakeDash {
+        to {
+          stroke-dashoffset: -100;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .btn-trace:hover .snake-outline rect {
+          animation: none;
+          opacity: 0.9;
+        }
+      }
+
+      /* ===== Mirror-reflect shine sweep ===== */
+      .btn-shine {
+        position: relative;
+        overflow: hidden;
+      }
+      .btn-shine::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -75%;
+        width: 45%;
+        height: 100%;
+        background: linear-gradient(
+          115deg,
+          transparent 0%,
+          rgba(255, 255, 255, 0.22) 45%,
+          rgba(255, 255, 255, 0.48) 50%,
+          rgba(255, 255, 255, 0.22) 55%,
+          transparent 100%
+        );
+        transform: skewX(-20deg);
+        transition: left 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        pointer-events: none;
+        z-index: 5;
+      }
+      .btn-shine:hover::after {
+        left: 130%;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .btn-shine::after {
+          transition: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Combined clip shape for the hero photo: a rectangle (head
+         silhouette, allowed to poke out above the blob) unioned with
+         the blob's own curve (body, matches .photo-blob-bg's
+         border-radius: 61% 39% 44% 56% / 54% 43% 57% 46%). Defined once
+         in objectBoundingBox units so it scales with the element it
+         clips, with no separate layout pass to fall out of sync with. -->
+    <svg width="0" height="0" style="position: absolute" aria-hidden="true">
+      <defs>
+        <clipPath id="heroPortraitClip" clipPathUnits="objectBoundingBox">
+          <rect x="0.12" y="0" width="0.76" height="0.8625" />
+          <path
+            d="M 0.61 0.375 A 0.39 0.26875 0 0 1 1 0.64375 A 0.44 0.35625 0 0 1 0.56 1 A 0.56 0.2875 0 0 1 0 0.7125 A 0.61 0.3375 0 0 1 0.61 0.375 Z"
+          />
+        </clipPath>
+      </defs>
+    </svg>
+    <div id="scrollProgress"></div>
+
+    <!-- ====== NAVBAR ====== -->
+    <nav
+      class="fixed top-0 left-0 w-full z-50 glass px-6 md:px-12 py-3 flex items-center justify-between border-b relative"
+      style="border-color: var(--border)"
+    >
+      <a href="#hero" class="logo-container">
+        <div class="logo-mark"><span class="logo-text">ME</span></div>
+        <span class="logo-brand">Mazen <span>DATA · DEV</span></span>
+      </a>
+      <button
+        id="mobileMenuBtn"
+        class="items-center justify-center w-9 h-9 rounded-lg border"
+        style="border-color: var(--border); color: var(--text-mid)"
+        aria-label="Toggle menu"
+      >
+        <i data-lucide="menu" class="w-5 h-5" id="menuIconOpen"></i>
+        <i data-lucide="x" class="w-5 h-5 hidden" id="menuIconClose"></i>
+      </button>
+      <div
+        id="navLinks"
+        class="flex items-center gap-6 text-sm font-medium"
+        style="color: var(--text-mid)"
+      >
+        <a href="#hero" class="nav-link hover:text-white transition">Home</a>
+        <a href="#about" class="nav-link hover:text-white transition">About</a>
+        <a href="#techstack" class="nav-link hover:text-white transition"
+          >Skills</a
+        >
+        <a
+          href="#projects"
+          class="nav-link hover:text-white transition"
+          id="navProjects"
+          >Projects</a
+        >
+        <a href="#events" class="nav-link hover:text-white transition"
+          >Experience</a
+        >
+        <a href="#workwithme" class="nav-link hover:text-white transition"
+          >Work with me</a
+        >
+        <span
+          class="status-pill hidden sm:flex items-center text-xs font-mono px-3 py-1 rounded-full border"
+          style="
+            color: var(--text-mid);
+            border-color: var(--border);
+            background: rgba(255, 255, 255, 0.02);
+          "
+        >
+          <span class="status-dot"></span>Available for Work
+        </span>
+      </div>
+    </nav>
+
+    <!-- ====== HERO ====== -->
+    <section
+      id="hero"
+      class="min-h-screen flex items-center px-6 md:px-16 pt-28 pb-12 relative"
+    >
+      <div class="max-w-6xl mx-auto w-full">
+        <div class="grid md:grid-cols-5 gap-10 items-center">
+          <div class="md:col-span-3 space-y-4 order-2 md:order-1">
+            <p
+              class="font-mono text-xs tracking-wide"
+              style="color: var(--text-lo)"
+            >
+              Hi, I'm
+            </p>
+            <h1
+              class="text-4xl sm:text-6xl md:text-7xl font-bold leading-[1.03] tracking-tight font-display"
+              style="color: var(--text-hi)"
+            >
+              Mazen Emad
+            </h1>
+            <h2
+              class="text-lg sm:text-2xl md:text-3xl font-medium tracking-tight font-display"
+            >
+              <span class="accent-teal">Data Analyst</span>
+              <span style="color: var(--text-lo)">&amp;</span>
+              <span class="accent-amber">Developer</span>
+            </h2>
+            <p
+              class="max-w-lg text-sm leading-relaxed mt-1"
+              style="color: var(--text-mid)"
+            >
+              Freelance analyst and developer turning messy data into clear
+              decisions, and building the digital tools that act on them.
+            </p>
+            <div class="flex flex-wrap gap-4 pt-2">
+              <a
+                href="#workwithme"
+                class="btn-neon btn-shine text-white px-6 py-2.5 rounded-full text-sm font-medium transition"
+                style="background: linear-gradient(90deg, #1f9c86, #eba750)"
+                >Start a project</a
+              >
+              <a
+                href="#projects"
+                class="btn-outline-neon btn-trace btn-shine px-6 py-2.5 rounded-full text-sm border transition"
+                style="color: var(--text-mid); border-color: var(--border)"
+              >
+                View portfolio
+                <svg
+                  class="snake-outline"
+                  width="100%"
+                  height="100%"
+                  preserveAspectRatio="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <defs>
+                    <linearGradient
+                      id="snakeGradPortfolio"
+                      x1="0"
+                      y1="0"
+                      x2="1"
+                      y2="0"
+                    >
+                      <stop offset="0%" style="stop-color: var(--teal)" />
+                      <stop offset="100%" style="stop-color: var(--amber)" />
+                    </linearGradient>
+                  </defs>
+                  <rect
+                    x="1"
+                    y="1"
+                    rx="999"
+                    ry="999"
+                    pathLength="100"
+                    stroke="url(#snakeGradPortfolio)"
+                    stroke-dasharray="34 66"
+                  />
+                </svg>
+              </a>
+            </div>
+            <div
+              class="flex items-center gap-4 pt-3 text-sm"
+              style="color: var(--text-lo)"
+            >
+              <span class="text-xs font-mono">Follow</span>
+              <div class="flex gap-3">
+                <a
+                  href="https://www.linkedin.com/in/mazen-emad1"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="icon-neon transition w-8 h-8 rounded-full border flex items-center justify-center"
+                  style="border-color: var(--border); color: var(--text-lo)"
+                  aria-label="LinkedIn"
+                  ><i class="fa-brands fa-linkedin-in text-base"></i
+                ></a>
+                <a
+                  href="https://github.com/Eng-MazenEmad"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="icon-neon transition w-8 h-8 rounded-full border flex items-center justify-center"
+                  style="border-color: var(--border); color: var(--text-lo)"
+                  aria-label="GitHub"
+                  ><i class="fa-brands fa-github text-base"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="md:col-span-2 flex justify-center md:justify-end order-1 md:order-2"
+          >
+            <div
+              class="photo-blob-outer w-60 h-60 sm:w-72 sm:h-72 md:w-80 md:h-80"
+            >
+              <div class="photo-blob-bg">
+                <div class="blob-layer"></div>
+                <div class="blob-layer-2"></div>
+                <div class="dot-grid"></div>
+                <div class="wave-stripes"></div>
+              </div>
+              <span
+                class="sparkle s-amber"
+                style="top: -9%; right: 2%; animation-delay: 0s"
+              >
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M12 0l2.2 8.8L23 11l-8.8 2.2L12 22l-2.2-8.8L1 11l8.8-2.2L12 0z"
+                  />
+                </svg>
+              </span>
+              <span
+                class="sparkle s-teal"
+                style="bottom: 2%; left: -8%; animation-delay: 0.8s"
+              >
+                <svg
+                  width="12"
+                  height="12"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M12 0l2.2 8.8L23 11l-8.8 2.2L12 22l-2.2-8.8L1 11l8.8-2.2L12 0z"
+                  />
+                </svg>
+              </span>
+              <span
+                class="sparkle s-amber"
+                style="top: 28%; left: -12%; animation-delay: 1.4s"
+              >
+                <svg
+                  width="9"
+                  height="9"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M12 0l2.2 8.8L23 11l-8.8 2.2L12 22l-2.2-8.8L1 11l8.8-2.2L12 0z"
+                  />
+                </svg>
+              </span>
+              <span
+                class="sparkle-dot"
+                style="
+                  top: 6%;
+                  left: -6%;
+                  background: var(--teal);
+                  animation-delay: 0.4s;
+                "
+              ></span>
+              <span
+                class="sparkle-dot"
+                style="
+                  bottom: 8%;
+                  right: -6%;
+                  background: var(--amber);
+                  animation-delay: 1.1s;
+                "
+              ></span>
+              <div class="photo-portrait">
+                <img src="assets/mezo.svg" alt="Mazen Emad profile" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl stagger"
+        >
+          <div
+            class="metric-card rounded-xl p-4 text-center border"
+            style="border-color: var(--border)"
+          >
+            <div
+              class="text-2xl font-bold font-mono accent-amber js-counter"
+              data-target="10"
+              data-suffix="+"
+            >
+              0
+            </div>
+            <div
+              class="text-[11px] mt-1 font-medium"
+              style="color: var(--text-hi)"
+            >
+              Projects Completed
+            </div>
+          </div>
+          <div
+            class="metric-card rounded-xl p-4 text-center border"
+            style="border-color: var(--border)"
+          >
+            <div
+              class="text-2xl font-bold font-mono accent-amber js-counter"
+              data-target="4"
+              data-suffix="+"
+            >
+              0
+            </div>
+            <div
+              class="text-[11px] mt-1 font-medium"
+              style="color: var(--text-hi)"
+            >
+              Years of Study &amp; Practice
+            </div>
+          </div>
+          <div
+            class="metric-card rounded-xl p-4 text-center border"
+            style="border-color: var(--border)"
+          >
+            <div
+              class="text-2xl font-bold font-mono accent-amber js-counter"
+              data-target="14"
+              data-suffix="+"
+            >
+              0
+            </div>
+            <div
+              class="text-[11px] mt-1 font-medium"
+              style="color: var(--text-hi)"
+            >
+              Core Tech Tools
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== ABOUT ME ====== -->
+    <section
+      id="about"
+      class="px-6 md:px-16 py-20 max-w-7xl mx-auto border-t"
+      style="border-color: var(--border)"
+    >
+      <div class="max-w-5xl mx-auto">
+        <div class="grid md:grid-cols-5 gap-12">
+          <div class="md:col-span-3 reveal-left order-1">
+            <span class="font-mono text-xs" style="color: var(--text-lo)"
+              >About</span
+            >
+            <h2
+              class="text-3xl md:text-4xl font-semibold tracking-tight font-display mt-2"
+              style="color: var(--text-hi)"
+            >
+              Turning data into<br />business impact
+            </h2>
+            <p class="mt-4 leading-relaxed" style="color: var(--text-mid)">
+              With <strong style="color: var(--text-hi)">4+ years</strong> of
+              academic and hands-on experience in data analysis and development,
+              I've built a solid grip on the tools that turn raw numbers into
+              decisions people actually act on.
+            </p>
+            <p
+              class="mt-3 leading-relaxed text-sm"
+              style="color: var(--text-lo)"
+            >
+              I'm a Computer Science &amp; Information Systems student at Capital
+              University, based in Cairo. I work with Python, SQL, Tableau, and
+              modern web technologies to build solutions that drive real
+              business growth.
+            </p>
+          </div>
+          <div class="md:col-span-2 reveal-right order-2">
+            <div class="space-y-7">
+              <div class="relative pl-7">
+                <span
+                  class="absolute left-0 top-[7px] w-2.5 h-2.5 rounded-full"
+                  style="
+                    background: var(--teal);
+                    box-shadow: 0 0 8px var(--teal);
+                  "
+                ></span>
+                <div
+                  class="font-mono text-[11px] font-semibold uppercase tracking-widest"
+                  style="color: var(--teal)"
+                >
+                  Education
+                </div>
+                <h3
+                  class="text-base font-semibold font-display mt-1 leading-snug"
+                  style="color: var(--text-hi)"
+                >
+                  Computer Science, Capital University
+                </h3>
+              </div>
+              <div class="relative pl-7">
+                <span
+                  class="absolute left-0 top-[7px] w-2.5 h-2.5 rounded-full"
+                  style="
+                    background: var(--teal);
+                    box-shadow: 0 0 8px var(--teal);
+                  "
+                ></span>
+                <div
+                  class="font-mono text-[11px] font-semibold uppercase tracking-widest"
+                  style="color: var(--teal)"
+                >
+                  Specialization
+                </div>
+                <h3
+                  class="text-base font-semibold font-display mt-1 leading-snug"
+                  style="color: var(--text-hi)"
+                >
+                  Information Systems
+                </h3>
+              </div>
+              <div class="relative pl-7">
+                <span
+                  class="absolute left-0 top-[7px] w-2.5 h-2.5 rounded-full"
+                  style="
+                    background: var(--teal);
+                    box-shadow: 0 0 8px var(--teal);
+                  "
+                ></span>
+                <div
+                  class="font-mono text-[11px] font-semibold uppercase tracking-widest"
+                  style="color: var(--teal)"
+                >
+                  Current Direction
+                </div>
+                <h3
+                  class="text-base font-semibold font-display mt-1 leading-snug"
+                  style="color: var(--text-hi)"
+                >
+                  Data Analyst &amp; BI Analyst
+                </h3>
+              </div>
+              <div class="relative pl-7">
+                <span
+                  class="absolute left-0 top-[7px] w-2.5 h-2.5 rounded-full"
+                  style="
+                    background: var(--teal);
+                    box-shadow: 0 0 8px var(--teal);
+                  "
+                ></span>
+                <div
+                  class="font-mono text-[11px] font-semibold uppercase tracking-widest"
+                  style="color: var(--teal)"
+                >
+                  Location
+                </div>
+                <h3
+                  class="text-base font-semibold font-display mt-1 leading-snug"
+                  style="color: var(--text-hi)"
+                >
+                  Cairo, Egypt
+                </h3>
+              </div>
+            </div>
+          </div>
+          <div class="md:col-span-3 order-3">
+            <a
+              href="assets/Mazen_CV.pdf"
+              download
+              class="cv-btn btn-neon btn-trace btn-shine"
+            >
+              <i data-lucide="download" class="w-4 h-4"></i> Download CV
+              <svg
+                class="snake-outline"
+                width="100%"
+                height="100%"
+                preserveAspectRatio="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <defs>
+                  <linearGradient
+                    id="snakeGradCV"
+                    x1="0"
+                    y1="0"
+                    x2="1"
+                    y2="0"
+                  >
+                    <stop offset="0%" style="stop-color: var(--teal)" />
+                    <stop offset="100%" style="stop-color: var(--amber)" />
+                  </linearGradient>
+                </defs>
+                <rect
+                  x="1"
+                  y="1"
+                  rx="999"
+                  ry="999"
+                  pathLength="100"
+                  stroke="url(#snakeGradCV)"
+                  stroke-dasharray="34 66"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== TECH STACK & SKILLS ====== -->
+    <section
+      id="techstack"
+      class="px-6 md:px-16 py-20 max-w-7xl mx-auto border-t"
+      style="border-color: var(--border)"
+    >
+      <div class="mb-10 reveal">
+        <span class="font-mono text-xs" style="color: var(--text-lo)"
+          >Expertise</span
+        >
+        <h2
+          class="text-3xl md:text-4xl font-semibold tracking-tight font-display"
+          style="color: var(--text-hi)"
+        >
+          Tech stack &amp; skills
+        </h2>
+        <p class="mt-2 max-w-xl text-sm" style="color: var(--text-lo)">
+          Tools I reach for daily, from data wrangling to full-stack
+          development.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="glass p-6 rounded-2xl reveal-left" id="skillsData">
+          <span class="category-title">Data Analysis &amp; Visualization</span>
+          <div id="skillsDataList"></div>
+        </div>
+        <div class="glass p-6 rounded-2xl reveal-right" id="skillsDev">
+          <span class="category-title">Development &amp; Tools</span>
+          <div id="skillsDevList"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== PROJECTS ====== -->
+    <section
+      id="projects"
+      class="px-6 md:px-16 py-20 max-w-7xl mx-auto border-t"
+      style="border-color: var(--border)"
+    >
+      <div id="projectListView">
+        <div
+          class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12"
+        >
+          <div class="reveal">
+            <span class="font-mono text-xs" style="color: var(--text-lo)"
+              >Development &amp; Data Works</span
+            >
+            <h2
+              class="text-3xl md:text-4xl font-semibold tracking-tight font-display"
+              style="color: var(--text-hi)"
+            >
+              Recent projects
+            </h2>
+          </div>
+          <div class="flex flex-wrap gap-2 reveal" id="filterContainer">
+            <button
+              data-filter="all"
+              class="filter-btn btn-trace tab-active px-4 py-1.5 rounded-full text-xs"
+              style="border-color: var(--border)"
+            >
+              All
+              <svg
+                class="snake-outline"
+                width="100%"
+                height="100%"
+                preserveAspectRatio="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <defs>
+                  <linearGradient
+                    id="snakeGradFilterAll"
+                    x1="0"
+                    y1="0"
+                    x2="1"
+                    y2="0"
+                  >
+                    <stop offset="0%" style="stop-color: var(--teal)" />
+                    <stop offset="100%" style="stop-color: var(--amber)" />
+                  </linearGradient>
+                </defs>
+                <rect
+                  x="1"
+                  y="1"
+                  rx="999"
+                  ry="999"
+                  pathLength="100"
+                  stroke="url(#snakeGradFilterAll)"
+                  stroke-dasharray="34 66"
+                />
+              </svg>
+            </button>
+            <button
+              data-filter="data"
+              class="filter-btn btn-trace px-4 py-1.5 rounded-full text-xs"
+              style="color: var(--text-lo); border-color: var(--border)"
+            >
+              Data Analysis
+              <svg
+                class="snake-outline"
+                width="100%"
+                height="100%"
+                preserveAspectRatio="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <defs>
+                  <linearGradient
+                    id="snakeGradFilterData"
+                    x1="0"
+                    y1="0"
+                    x2="1"
+                    y2="0"
+                  >
+                    <stop offset="0%" style="stop-color: var(--teal)" />
+                    <stop offset="100%" style="stop-color: var(--amber)" />
+                  </linearGradient>
+                </defs>
+                <rect
+                  x="1"
+                  y="1"
+                  rx="999"
+                  ry="999"
+                  pathLength="100"
+                  stroke="url(#snakeGradFilterData)"
+                  stroke-dasharray="34 66"
+                />
+              </svg>
+            </button>
+            <button
+              data-filter="desktop"
+              class="filter-btn btn-trace px-4 py-1.5 rounded-full text-xs"
+              style="color: var(--text-lo); border-color: var(--border)"
+            >
+              Desktop
+              <svg
+                class="snake-outline"
+                width="100%"
+                height="100%"
+                preserveAspectRatio="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <defs>
+                  <linearGradient
+                    id="snakeGradFilterDesktop"
+                    x1="0"
+                    y1="0"
+                    x2="1"
+                    y2="0"
+                  >
+                    <stop offset="0%" style="stop-color: var(--teal)" />
+                    <stop offset="100%" style="stop-color: var(--amber)" />
+                  </linearGradient>
+                </defs>
+                <rect
+                  x="1"
+                  y="1"
+                  rx="999"
+                  ry="999"
+                  pathLength="100"
+                  stroke="url(#snakeGradFilterDesktop)"
+                  stroke-dasharray="34 66"
+                />
+              </svg>
+            </button>
+            <button
+              data-filter="frontend"
+              class="filter-btn btn-trace px-4 py-1.5 rounded-full text-xs"
+              style="color: var(--text-lo); border-color: var(--border)"
+            >
+              Frontend
+              <svg
+                class="snake-outline"
+                width="100%"
+                height="100%"
+                preserveAspectRatio="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <defs>
+                  <linearGradient
+                    id="snakeGradFilterFrontend"
+                    x1="0"
+                    y1="0"
+                    x2="1"
+                    y2="0"
+                  >
+                    <stop offset="0%" style="stop-color: var(--teal)" />
+                    <stop offset="100%" style="stop-color: var(--amber)" />
+                  </linearGradient>
+                </defs>
+                <rect
+                  x="1"
+                  y="1"
+                  rx="999"
+                  ry="999"
+                  pathLength="100"
+                  stroke="url(#snakeGradFilterFrontend)"
+                  stroke-dasharray="34 66"
+                />
+              </svg>
+            </button>
+            <button
+              data-filter="fullstack"
+              class="filter-btn btn-trace px-4 py-1.5 rounded-full text-xs"
+              style="color: var(--text-lo); border-color: var(--border)"
+            >
+              Full-Stack
+              <svg
+                class="snake-outline"
+                width="100%"
+                height="100%"
+                preserveAspectRatio="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <defs>
+                  <linearGradient
+                    id="snakeGradFilterFullstack"
+                    x1="0"
+                    y1="0"
+                    x2="1"
+                    y2="0"
+                  >
+                    <stop offset="0%" style="stop-color: var(--teal)" />
+                    <stop offset="100%" style="stop-color: var(--amber)" />
+                  </linearGradient>
+                </defs>
+                <rect
+                  x="1"
+                  y="1"
+                  rx="999"
+                  ry="999"
+                  pathLength="100"
+                  stroke="url(#snakeGradFilterFullstack)"
+                  stroke-dasharray="34 66"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div
+          id="projectGrid"
+          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 stagger"
+        ></div>
+      </div>
+      <div id="projectDetailView" class="detail-section">
+        <button
+          id="backToProjects"
+          class="back-btn mb-8 flex items-center gap-2 transition text-sm border rounded-full px-4 py-2"
+          style="color: var(--text-lo); border-color: var(--border)"
+        >
+          <i data-lucide="arrow-left" class="w-4 h-4"></i> Back to projects
+        </button>
+        <div
+          id="projectDetailContent"
+          class="glass rounded-3xl p-6 md:p-10 border"
+          style="border-color: var(--border-strong)"
+        ></div>
+      </div>
+    </section>
+
+    <!-- ====== EXPERIENCE & EVENTS ====== -->
+    <section
+      id="events"
+      class="px-6 md:px-16 py-20 max-w-7xl mx-auto border-t"
+      style="border-color: var(--border)"
+    >
+      <div class="mb-12 reveal">
+        <span class="font-mono text-xs" style="color: var(--text-lo)"
+          >Collaboration</span
+        >
+        <h2
+          class="text-3xl md:text-4xl font-semibold tracking-tight font-display"
+          style="color: var(--text-hi)"
+        >
+          Experience &amp; events
+        </h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 stagger">
+        <div class="glass rounded-2xl p-5 glow-card transition-all flex flex-col">
+          <div
+            class="h-72 sm:h-64 md:h-56 w-full rounded-xl overflow-hidden photo-frame border mb-4"
+            style="border-color: var(--border)"
+          >
+            <img
+              src="assets/mazen1.png"
+              alt="Redbull Prossed"
+              class="w-full h-full object-cover object-center"
+            />
+          </div>
+          <h3
+            class="text-lg font-semibold font-display"
+            style="color: var(--text-hi)"
+          >
+            Redbull Prossed · 2023
+          </h3>
+          <p class="text-sm mt-1" style="color: var(--text-lo)">
+            Player Communication · Stage Management
+          </p>
+          <p class="text-xs mt-2 leading-relaxed" style="color: var(--text-mid)">
+            Acted as the primary on-stage technical point of contact, communicating directly with players, monitoring live setups,
+             and instantly troubleshooting any technical issues on stage to keep the event running seamlessly under pressure.
+          </p>
+          <div class="flex flex-wrap gap-1.5 mt-3">
+            <span
+              class="text-[10px] px-2 py-0.5 rounded-full border"
+              style="border-color: var(--border); color: var(--text-lo)"
+              >Conflict Resolution</span
+            >
+            <span
+              class="text-[10px] px-2 py-0.5 rounded-full border"
+              style="border-color: var(--border); color: var(--text-lo)"
+              >Public Speaking</span
+            >
+            <span
+              class="text-[10px] px-2 py-0.5 rounded-full border"
+              style="border-color: var(--border); color: var(--text-lo)"
+              >Cross-Functional Communication</span
+            >
+            <span
+              class="text-[10px] px-2 py-0.5 rounded-full border"
+              style="border-color: var(--border); color: var(--text-lo)"
+              >Agile Workflow</span
+            >
+          </div>
+        </div>
+        <div class="glass rounded-2xl p-5 glow-card transition-all flex flex-col">
+          <div
+            class="h-72 sm:h-64 md:h-56 w-full rounded-xl overflow-hidden photo-frame border mb-4"
+            style="border-color: var(--border)"
+          >
+            <img
+              src="assets/mazen2.png"
+              alt="MBL Legend MENA"
+              class="w-full h-full object-cover object-center"
+            />
+          </div>
+          <h3
+            class="text-lg font-semibold font-display"
+            style="color: var(--text-hi)"
+          >
+            MBL Legend MENA · 2026
+          </h3>
+          <p class="text-sm mt-1" style="color: var(--text-lo)">
+            Technical Support · Stage Operations
+          </p>
+          <p class="text-xs mt-2 leading-relaxed" style="color: var(--text-mid)">
+            Led on-ground technical operations for the Mobile Legends: Bang
+            Bang regional finals across 4 days — coordinating main stage
+            setup, network stability, and backstage broadcast
+            infrastructure for a seamless live production.
+          </p>
+          <div class="flex flex-wrap gap-1.5 mt-3">
+            <span
+              class="text-[10px] px-2 py-0.5 rounded-full border"
+              style="border-color: var(--border); color: var(--text-lo)"
+              >Cross-Functional</span
+            >
+            <span
+              class="text-[10px] px-2 py-0.5 rounded-full border"
+              style="border-color: var(--border); color: var(--text-lo)"
+              >Decision Making</span
+            >
+            <span
+              class="text-[10px] px-2 py-0.5 rounded-full border"
+              style="border-color: var(--border); color: var(--text-lo)"
+              >Network Infrastructure</span
+            >
+            <span
+              class="text-[10px] px-2 py-0.5 rounded-full border"
+              style="border-color: var(--border); color: var(--text-lo)"
+              >Live Broadcast Support</span
+            >
+                        <span
+              class="text-[10px] px-2 py-0.5 rounded-full border"
+              style="border-color: var(--border); color: var(--text-lo)"
+              >Hardware Deployment</span
+            >
+            <span
+              class="text-[10px] px-2 py-0.5 rounded-full border"
+              style="border-color: var(--border); color: var(--text-lo)"
+              >Network Troubleshooting</span>
+              <span
+              class="text-[10px] px-2 py-0.5 rounded-full border"
+              style="border-color: var(--border); color: var(--text-lo)"
+              >Event Operations</span>
+          </div>
+        </div>
+        <div class="glass rounded-2xl p-5 glow-card transition-all flex flex-col">
+          <div
+            class="h-72 sm:h-64 md:h-56 w-full rounded-xl overflow-hidden photo-frame border mb-4"
+            style="border-color: var(--border)"
+          >
+            <img
+              src="assets/mazen3.png"
+              alt="ESS25"
+              class="w-full h-full object-cover object-center"
+            />
+          </div>
+          <h3
+            class="text-lg font-semibold font-display"
+            style="color: var(--text-hi)"
+          >
+            Esports Summit · 2025
+          </h3>
+          <p class="text-sm mt-1" style="color: var(--text-lo)">
+            Technical Support · Hardware Deployment
+          </p>
+          <p class="text-xs mt-2 leading-relaxed" style="color: var(--text-mid)">
+            Deployed critical PC, PS5, and display infrastructure for major brand showcases, ensuring stable hardware performance,
+            low-latency connectivity, and smooth tournament operations throughout the event.
+          </p>
+          <div class="flex flex-wrap gap-1.5 mt-3">
+            <span
+              class="text-[10px] px-2 py-0.5 rounded-full border"
+              style="border-color: var(--border); color: var(--text-lo)"
+              >Technical Support</span
+            >
+            <span
+              class="text-[10px] px-2 py-0.5 rounded-full border"
+              style="border-color: var(--border); color: var(--text-lo)"
+              >Console Management</span
+            >
+            <span
+              class="text-[10px] px-2 py-0.5 rounded-full border"
+              style="border-color: var(--border); color: var(--text-lo)"
+              >Hardware Deployment</span
+            >
+            <span
+              class="text-[10px] px-2 py-0.5 rounded-full border"
+              style="border-color: var(--border); color: var(--text-lo)"
+              >Network Troubleshooting</span>
+              <span
+              class="text-[10px] px-2 py-0.5 rounded-full border"
+              style="border-color: var(--border); color: var(--text-lo)"
+              >Event Operations</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ====== WORK WITH ME ====== -->
+    <section
+      id="workwithme"
+      class="px-6 md:px-16 py-20 max-w-7xl mx-auto border-t"
+      style="border-color: var(--border)"
+    >
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12 reveal">
+          <span class="font-mono text-xs" style="color: var(--text-lo)"
+            >Let's Work Together</span
+          >
+          <h2
+            class="text-3xl md:text-4xl font-semibold tracking-tight font-display"
+            style="color: var(--text-hi)"
+          >
+            Data Analysis &amp; Freelance
+          </h2>
+          <p
+            class="mt-2 max-w-xl mx-auto text-sm"
+            style="color: var(--text-lo)"
+          >
+            From messy data to clear decisions — I help you unlock growth with
+            custom analytics.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 stagger">
+          <div class="glass p-6 rounded-2xl text-center">
+            <div
+              class="w-11 h-11 rounded-full flex items-center justify-center mx-auto mb-4 font-mono font-bold"
+              style="background: var(--teal-soft); color: var(--teal)"
+            >
+              1
+            </div>
+            <h4 class="font-medium font-display" style="color: var(--text-hi)">
+              Discovery
+            </h4>
+            <p class="text-sm mt-1" style="color: var(--text-lo)">
+              Quick chat to understand your data bottlenecks &amp; goals.
+            </p>
+          </div>
+          <div class="glass p-6 rounded-2xl text-center">
+            <div
+              class="w-11 h-11 rounded-full flex items-center justify-center mx-auto mb-4 font-mono font-bold"
+              style="background: var(--teal-soft); color: var(--teal)"
+            >
+              2
+            </div>
+            <h4 class="font-medium font-display" style="color: var(--text-hi)">
+              Analysis &amp; delivery
+            </h4>
+            <p class="text-sm mt-1" style="color: var(--text-lo)">
+              Deep-dive, dashboards, predictive models — tailored to you.
+            </p>
+          </div>
+          <div class="glass p-6 rounded-2xl text-center">
+            <div
+              class="w-11 h-11 rounded-full flex items-center justify-center mx-auto mb-4 font-mono font-bold"
+              style="background: var(--teal-soft); color: var(--teal)"
+            >
+              3
+            </div>
+            <h4 class="font-medium font-display" style="color: var(--text-hi)">
+              Actionable insights
+            </h4>
+            <p class="text-sm mt-1" style="color: var(--text-lo)">
+              Clear recommendations you can use immediately.
+            </p>
+          </div>
+        </div>
+        <div
+          class="glass rounded-3xl p-8 md:p-12 text-center max-w-2xl mx-auto glow-card reveal-scale"
+          style="border-color: var(--border-strong)"
+        >
+          <h3
+            class="text-2xl font-semibold font-display"
+            style="color: var(--text-hi)"
+          >
+            Ready to turn data into growth?
+          </h3>
+          <p class="mt-2 text-sm" style="color: var(--text-lo)">
+            Send a project inquiry or get in touch for collaboration.
+          </p>
+          <div class="flex flex-wrap justify-center gap-4 mt-6">
+            <a
+              href="https://mail.google.com/mail/?view=cm&fs=1&to=mazenemad10000@gmail.com&su=Project%20Inquiry"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-neon btn-shine text-white px-8 py-3 rounded-full text-sm font-medium transition flex items-center gap-2"
+              style="background: linear-gradient(90deg, #1f9c86, #eba750)"
+            >
+              <i data-lucide="message-circle" class="w-4 h-4"></i> Let's work
+              together
+            </a>
+            <a
+              href="https://mail.google.com/mail/?view=cm&fs=1&to=mazenemad10000@gmail.com&su=Hello%20Mazen"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-outline-neon btn-trace btn-shine px-8 py-3 rounded-full text-sm border transition flex items-center gap-2"
+              style="color: var(--text-mid); border-color: var(--border)"
+            >
+              <i data-lucide="mail" class="w-4 h-4"></i> Send an email
+              <svg
+                class="snake-outline"
+                width="100%"
+                height="100%"
+                preserveAspectRatio="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <defs>
+                  <linearGradient
+                    id="snakeGradEmail"
+                    x1="0"
+                    y1="0"
+                    x2="1"
+                    y2="0"
+                  >
+                    <stop offset="0%" style="stop-color: var(--teal)" />
+                    <stop offset="100%" style="stop-color: var(--amber)" />
+                  </linearGradient>
+                </defs>
+                <rect
+                  x="1"
+                  y="1"
+                  rx="999"
+                  ry="999"
+                  pathLength="100"
+                  stroke="url(#snakeGradEmail)"
+                  stroke-dasharray="34 66"
+                />
+              </svg>
+            </a>
+          </div>
+          <p class="text-[10px] mt-4" style="color: var(--text-lo)">
+            Direct message or email anytime
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== FOOTER ====== -->
+    <footer
+      id="contact"
+      class="border-t px-6 md:px-16 py-12 max-w-7xl mx-auto"
+      style="border-color: var(--border)"
+    >
+      <div
+        class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6"
+      >
+        <div class="flex items-center gap-3">
+          <div class="logo-mark logo-mark-sm">
+            <span class="logo-text" style="font-size: 11px">ME</span>
+          </div>
+          <div>
+            <span
+              class="text-sm font-semibold font-display"
+              style="color: var(--text-hi)"
+              >Mazen Emad</span
+            >
+            <p class="text-xs font-mono" style="color: var(--text-lo)">
+              DATA · DEV · 2026
+            </p>
+          </div>
+        </div>
+        <div class="flex gap-6 text-sm" style="color: var(--text-lo)">
+          <a
+            href="https://github.com/Eng-MazenEmad"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="hover:text-white transition flex items-center gap-1"
+            ><i class="fa-brands fa-github"></i> GitHub</a
+          >
+          <a
+            href="https://www.linkedin.com/in/mazen-emad1"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="hover:text-white transition flex items-center gap-1"
+            ><i class="fa-brands fa-linkedin-in"></i> LinkedIn</a
+          >
+          <a
+            href="https://mail.google.com/mail/?view=cm&fs=1&to=mazenemad10000@gmail.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="hover:text-white transition flex items-center gap-1"
+            ><i data-lucide="mail" class="w-4 h-4"></i> Email</a
+          >
+        </div>
+      </div>
+      <div
+        class="mt-8 text-[10px] border-t pt-6 flex justify-center"
+        style="color: var(--text-lo); border-color: var(--border)"
+      >
+        <span>© 2026 Mazen Emad · all rights reserved</span>
+      </div>
+    </footer>
+
+    <script>
+      // ====== PROJECT DATA ======
+      const categoryLabels = {
+        all: "All",
+        data: "Data Analysis",
+        desktop: "Desktop",
+        frontend: "Frontend",
+        fullstack: "Full-Stack",
+      };
+      const projects = [
+        {
+          id: 1,
+          title: "Superstore Sales & Profitability Analysis",
+          category: "data",
+          problem:
+            "Retail sales and profitability are declining due to aggressive discounting and regional losses.",
+          solution:
+            "Built a comprehensive data analysis pipeline using Python (Pandas, NumPy, Matplotlib, Seaborn) to analyze customer segments, geographic performance, and the discount-profitability relationship.",
+          impact:
+            "Identified that heavy discounts on specific sub-categories (like Tables and Binders) are eroding profit margins, enabling targeted pricing strategy adjustments.",
+          tech: [
+            "Python",
+            "Pandas",
+            "NumPy",
+            "Matplotlib",
+            "Seaborn",
+            "Jupyter Notebook",
+          ],
+          fullDescription:
+            "This project investigates the Superstore retail dataset (9,994 transactions, 21 columns) to uncover data-driven strategies for optimizing business performance. The analysis focused on three core areas: identifying the most and least profitable customer segments, analyzing geographic sales patterns to isolate loss-making states, and evaluating the direct impact of discount rates on product profitability. The workflow included data inspection for missing values and outliers, data wrangling for performance optimization, and extensive exploratory data analysis (EDA) to pinpoint root causes of financial losses.",
+          keyMetrics: [
+            "Analyzed 9,994 transactions & 793 unique customers",
+            "Identified extreme sales outliers up to $22,638",
+            "Detected significant negative profits down to -$6,599",
+            "Isolated specific sub-categories (e.g., Tables, Binders) where discounts wipe out profit margins",
+          ],
+          image:
+            "assets/superstore.svg",
+          dashboardImage:
+            "assets/SuperStore_Viz.svg",
+          links: {
+            demo: "https://github.com/Eng-MazenEmad/Superstore_Sales_Analysis",
+            github:
+              "https://github.com/Eng-MazenEmad/Superstore_Sales_Analysis",
+          },
+        },
+        {
+          id: 2,
+          title: "Customer 360 Analysis",
+          category: "data",
+          problem: "Fragmented customer data, unoptimized subscription tiers, and untracked marketing channel performance across global accounts, Unmonitored cancellation priority distribution, revenue leakage from refunds, and misallocated marketing spend across acquisition channels",
+          solution:
+            "Performed exploratory data analysis and built integrated data wrangling pipelines across relational customer, transaction, and marketing tables",
+          impact:
+            "Uncovered conversion drivers, mapped global account distributions, and tracked support ticket dynamics to optimize revenue streams",
+          tech: ["Python", "Pandas", "NumPy", "Matplotlib", "Seaborn"],
+          fullDescription:
+            "A comprehensive data analysis project investigating 360-degree customer behavior by inspecting and cleaning multi-table relational files—including customers, subscriptions, support tickets, and quarterly transactions. The pipeline handles data wrangling, memory optimization, currency parsing, and generates exploratory visualizations covering subscription plan profitability, marketing channel effectiveness, and cancellation priority distributions.",
+          keyMetrics: [
+            "26.0% high-priority cancellation tracking",
+            "LinkedIn as top conversion channel (~900 interactions)",
+            "Professional tier leading active subscription volume",
+            "Comprehensive subscription & support metrics",
+            "CMP-0017: Top conversion with low budget",
+          ],
+          image:
+            "assets/Customer360.svg",
+          dashboardImage:
+            "assets/Customer360_viz.svg",
+          links: { demo: "https://github.com/Eng-MazenEmad/Customer_360_Analysis", github: "https://github.com/Eng-MazenEmad/Customer_360_Analysis" },
+        },
+
+        {
+          id: 3,
+          title: "Medical Appointments Attendance Analysis",
+          category: "data",
+          problem: "High rates of patient no-shows and missed medical appointments impacting healthcare efficiency",
+          solution:
+            "Performed exploratory data analysis on patient demographics, chronic conditions, and SMS reminder impacts to uncover attendance patterns",
+          impact:
+            "Identified key risk factors including age brackets, neighborhood hotspots, and the counter-intuitive higher absence rate among patients receiving SMS reminders",
+          tech: ["Python", "Pandas", "NumPy", "Matplotlib", "Seaborn"],
+          fullDescription:
+            "An exploratory data analysis project examining 110,527 medical appointment records to uncover factors driving patient no-shows. The workflow involved memory optimization, data cleaning for invalid ages, and generating multi-faceted visualizations covering chronic conditions, top absentee neighborhoods (led by Jardim Camburi), age group trends, and the effect of SMS reminders.",
+          keyMetrics: [
+            "110,527 patient records analyzed",
+            "Jardim Camburi identified as top absence hotspot",
+            "Young & Adult age groups show highest absence rate (~23%)",
+          ],
+          image: "assets/Medical_Appointments1.svg",
+          dashboardImage: "assets/Medical_Appointments2.svg",
+          links: { demo: "https://github.com/Eng-MazenEmad/Medical_Appointments_Analysis", github: "https://github.com/Eng-MazenEmad/Medical_Appointments_Analysis" },
+        },
+        {
+          id: 5,
+          title: "Countries of the World Data Pipeline & Analysis",
+          category: "data",
+          problem: "Scattered and un-extracted global demographic data limiting macro-level population and density insights",
+          solution:
+            "Built an automated web scraping pipeline using BeautifulSoup to extract global metrics, followed by feature engineering and Plotly visualizations",
+          impact:
+            "Extracted clean demographic data, engineered population density metrics, and uncovered global population distributions across major nations and small territories",
+          tech: ["Python", "BeautifulSoup", "Pandas", "Plotly Express"],
+          fullDescription:
+            "An automated data pipeline and exploratory analysis project targeting the ScrapeThisSite sandbox. The system extracts raw HTML country container elements, parses names, capitals, population, and area metrics into a Pandas DataFrame, and executes feature engineering to compute population density. Interactive Plotly dashboards visualize the top smallest countries by area, high-density nations led by Monaco, and demographic breakdowns for countries with populations exceeding 100 million.",
+          keyMetrics: [
+            "Automated web extraction pipeline",
+            "Monaco leads population density (~15k people/km²)",
+            "Demographic analysis for nations >100M population",
+          ],
+          image: "assets/Countries_of_the_World1.svg",
+          dashboardImage: "assets/Countries_of_the_World2.svg",
+          links: { demo: "#", github: "https://github.com/Eng-MazenEmad/Countries_of_the_World" },
+        },
+
+
+        // {
+        //   id: 4,
+        //   title: "Sales performance cockpit",
+        //   category: "data",
+        //   problem: "Sales team lacked real‑time visibility",
+        //   solution:
+        //     "Designed a live KPI dashboard with drill‑down capabilities",
+        //   impact: "Boosted sales productivity by 18% in 2 months",
+        //   tech: ["Tableau", "Python", "Excel", "Salesforce"],
+        //   fullDescription:
+        //     "The sales team was operating blind, with weekly reports that were already outdated. I built a real-time sales cockpit integrating Salesforce, CRM, and marketing tools, giving live pipeline visibility, win-rate analysis, and territory performance metrics.",
+        //   keyMetrics: [
+        //     "18% productivity boost",
+        //     "40% faster reporting",
+        //     "95% user adoption",
+        //   ],
+        //   image:
+        //     "https://placehold.co/800x400/141a22/3ec9b0?text=Sales+Cockpit",
+        //   dashboardImage:
+        //     "https://placehold.co/800x400/141a22/3ec9b0?text=Sales+Dashboard",
+        //   links: { demo: "#", github: "#" },
+        // },
+        // {
+        //   id: 5,
+        //   title: "Task manager (desktop)",
+        //   category: "desktop",
+        //   problem: "Fragmented task management across teams",
+        //   solution: "Electron app with local sync & notifications",
+        //   impact: "Centralized workflows, reduced meeting time by 30%",
+        //   tech: ["Electron", "React", "SQLite"],
+        //   fullDescription:
+        //     "Remote teams were using multiple tools for task management, leading to confusion and missed deadlines. I built a lightweight desktop app using Electron that centralizes tasks, supports offline sync, and provides smart notifications.",
+        //   keyMetrics: [
+        //     "30% meeting reduction",
+        //     "45% faster task completion",
+        //     "98% user satisfaction",
+        //   ],
+        //   image: "https://placehold.co/800x400/141a22/eba750?text=Task+Manager",
+        //   dashboardImage:
+        //     "https://placehold.co/800x400/141a22/eba750?text=Task+App",
+        //   links: { demo: "#", github: "#" },
+        // },
+        // {
+        //   id: 5,
+        //   title: "Portfolio v3",
+        //   category: "frontend",
+        //   problem: "Outdated personal brand",
+        //   solution: "Minimalist, dark‑mode, fully responsive portfolio",
+        //   impact: "Increased inbound inquiries by 40%",
+        //   tech: ["React", "Tailwind", "Framer"],
+        //   fullDescription:
+        //     "A complete rebrand of my personal portfolio focused on a distinctive dark aesthetic, micro-interactions, and responsiveness — dynamic project filtering, smooth animations, and a clean layout that showcases the work.",
+        //   keyMetrics: [
+        //     "40% more inquiries",
+        //     "2x time on site",
+        //     'Awarded "Best Portfolio"',
+        //   ],
+        //   image: "https://placehold.co/800x400/141a22/3ec9b0?text=Portfolio+v3",
+        //   dashboardImage:
+        //     "https://placehold.co/800x400/141a22/3ec9b0?text=Portfolio+Preview",
+        //   links: { demo: "#", github: "#" },
+        // },
+        // {
+        //   id: 6,
+        //   title: "E‑commerce full‑stack",
+        //   category: "fullstack",
+        //   problem: "Complex checkout flow leading to cart abandonment",
+        //   solution: "Next.js + Stripe + Prisma with streamlined UX",
+        //   impact: "Reduced abandonment by 12% and increased conversion",
+        //   tech: ["Next.js", "Tailwind", "Prisma"],
+        //   fullDescription:
+        //     "An e-commerce platform was losing sales to a complicated, multi-step checkout process. I redesigned it as a single-page flow using Next.js, integrated Stripe for payments, and used Prisma for the database — a frictionless, secure checkout.",
+        //   keyMetrics: [
+        //     "12% lower abandonment",
+        //     "8% conversion lift",
+        //     "Sub-2s load time",
+        //   ],
+        //   image:
+        //     "https://placehold.co/800x400/141a22/eba750?text=Ecommerce+Fullstack",
+        //   dashboardImage:
+        //     "https://placehold.co/800x400/141a22/eba750?text=Ecommerce+Preview",
+        //   links: { demo: "#", github: "#" },
+        // },
+      ];
+
+      const skillsData = [
+        { name: "Python", level: 92 },
+        { name: "SQL", level: 90 },
+        { name: "Pandas / NumPy", level: 88 },
+        { name: "Tableau", level: 85 },
+        { name: "Power BI", level: 78 },
+        { name: "Matplotlib / Seaborn", level: 80 },
+        { name: "Looker", level: 65 },
+      ];
+      const skillsDev = [
+        { name: "PHP", level: 70 },
+        { name: "C++ / Java", level: 68 },
+        { name: "Git / GitHub", level: 85 },
+        { name: "Visual Studio Code", level: 88 },
+        { name: "PostgreSQL / MySQL", level: 78 },
+        { name: "Canva", level: 75 },
+        { name: "HTML / CSS / JS", level: 80 },
+      ];
+
+      function renderSkills(containerId, list) {
+        const el = document.getElementById(containerId);
+        el.innerHTML = list
+          .map(
+            (s) => `
+        <div class="skill-row">
+          <div class="flex justify-between items-baseline">
+            <span class="name">${s.name}</span>
+            <span class="pct">${s.level}%</span>
+          </div>
+          <div class="track"><div class="fill" data-level="${s.level}"></div></div>
+        </div>
+      `,
+          )
+          .join("");
+      }
+      renderSkills("skillsDataList", skillsData);
+      renderSkills("skillsDevList", skillsDev);
+
+      // ====== DOM refs ======
+      const grid = document.getElementById("projectGrid");
+      const filterBtns = document.querySelectorAll(".filter-btn");
+      const listView = document.getElementById("projectListView");
+      const detailView = document.getElementById("projectDetailView");
+      const detailContent = document.getElementById("projectDetailContent");
+      const backBtn = document.getElementById("backToProjects");
+
+      function renderProjects(filter = "all") {
+        const filtered =
+          filter === "all"
+            ? projects
+            : projects.filter((p) => p.category === filter);
+        grid.innerHTML = filtered
+          .map(
+            (p) => `
+        <div class="glass rounded-2xl p-5 glow-card transition-all flex flex-col cursor-pointer" data-project-id="${p.id}">
+          <span class="text-[10px] font-mono px-2 py-0.5 rounded-full border self-start" style="color:var(--teal); background:var(--teal-soft); border-color:rgba(62,201,176,0.25)">${categoryLabels[p.category] || p.category}</span>
+          <h3 class="text-lg font-semibold font-display mt-3" style="color:var(--text-hi)">${p.title}</h3>
+          <div class="mt-2 space-y-1 text-sm">
+            <p style="color:var(--text-lo)"><span style="color:var(--text-mid)">Problem:</span> ${p.problem}</p>
+            <p style="color:var(--text-lo)"><span style="color:var(--text-mid)">Solution:</span> ${p.solution}</p>
+            <p style="color:var(--text-lo)"><span style="color:var(--text-mid)">Impact:</span> <span class="accent-amber">${p.impact}</span></p>
+          </div>
+          <div class="flex flex-wrap gap-1.5 mt-3">
+            ${p.tech.map((t) => `<span class="text-[10px] px-2 py-0.5 rounded-full border" style="border-color:var(--border); color:var(--text-lo)">${t}</span>`).join("")}
+          </div>
+          <div class="mt-4 pt-3 border-t flex gap-3" style="border-color:var(--border)">
+            <span class="text-xs accent-teal transition cursor-pointer">View details →</span>
+          </div>
+        </div>
+      `,
+          )
+          .join("");
+
+        document.querySelectorAll("[data-project-id]").forEach((card) => {
+          card.addEventListener("click", () =>
+            showProjectDetail(parseInt(card.dataset.projectId)),
+          );
+        });
+
+        setTimeout(() => {
+          const staggerEl = document.querySelector("#projectGrid.stagger");
+          if (staggerEl && isElementInViewport(staggerEl))
+            staggerEl.classList.add("visible");
+        }, 100);
+      }
+
+      function showProjectDetail(projectId) {
+        const project = projects.find((p) => p.id === projectId);
+        if (!project) return;
+        detailContent.innerHTML = `
+        <div class="space-y-8">
+          <div>
+            <span class="text-xs font-mono px-3 py-1 rounded-full border" style="color:var(--teal); background:var(--teal-soft); border-color:rgba(62,201,176,0.25)">${categoryLabels[project.category] || project.category}</span>
+            <h2 class="text-3xl md:text-4xl font-bold font-display mt-3" style="color:var(--text-hi)">${project.title}</h2>
+          </div>
+          <div class="photo-frame rounded-xl overflow-hidden border" style="border-color:var(--border)">
+            <img src="${project.image}" alt="${project.title}" class="w-full h-auto object-cover" />
+          </div>
+          <div>
+            <h4 class="text-sm font-semibold font-mono uppercase tracking-wider mb-2" style="color:var(--text-mid)">Overview</h4>
+            <p class="leading-relaxed" style="color:var(--text-mid)">${project.fullDescription}</p>
+          </div>
+          <div>
+            <h4 class="text-sm font-semibold font-mono uppercase tracking-wider mb-3" style="color:var(--text-mid)">Key results</h4>
+            <div class="flex flex-wrap gap-3">
+              ${project.keyMetrics.map((m) => `<span style="background:var(--amber-soft); border:1px solid rgba(235,167,80,0.25); color:var(--amber)" class="px-4 py-2 rounded-full text-sm">${m}</span>`).join("")}
+            </div>
+          </div>
+          <div>
+            <h4 class="text-sm font-semibold font-mono uppercase tracking-wider mb-3" style="color:var(--text-mid)">Dashboard preview</h4>
+            <div class="photo-frame rounded-xl overflow-hidden border" style="border-color:var(--border)">
+              <img src="${project.dashboardImage}" alt="Dashboard preview" class="w-full h-auto object-cover" />
+            </div>
+          </div>
+          <div>
+            <h4 class="text-sm font-semibold font-mono uppercase tracking-wider mb-2" style="color:var(--text-mid)">Tech stack</h4>
+            <div class="flex flex-wrap gap-2">
+              ${project.tech.map((t) => `<span class="text-xs px-3 py-1.5 rounded-full border" style="border-color:var(--border); color:var(--text-mid)">${t}</span>`).join("")}
+            </div>
+          </div>
+          <div class="flex flex-wrap gap-4 pt-4 border-t" style="border-color:var(--border)">
+            <a href="${project.links.demo}" target="_blank" class="btn-neon btn-shine text-white px-6 py-2.5 rounded-full text-sm font-medium transition flex items-center gap-2" style="background:linear-gradient(90deg,#1f9c86,#eba750)">
+              <i data-lucide="external-link" class="w-4 h-4"></i> Live demo
+            </a>
+            <a href="${project.links.github}" target="_blank" class="btn-outline-neon btn-trace btn-shine px-6 py-2.5 rounded-full text-sm border transition flex items-center gap-2" style="color:var(--text-mid); border-color:var(--border)">
+              <i class="fa-brands fa-github"></i> Source code
+              <svg class="snake-outline" width="100%" height="100%" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                <defs><linearGradient id="snakeGradSource${project.id}" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0%" style="stop-color:var(--teal)"/><stop offset="100%" style="stop-color:var(--amber)"/>
+                </linearGradient></defs>
+                <rect x="1" y="1" rx="999" ry="999" pathLength="100" stroke="url(#snakeGradSource${project.id})" stroke-dasharray="34 66"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      `;
+        listView.style.display = "none";
+        detailView.classList.add("active");
+        detailView.style.display = "block";
+        lucide.createIcons();
+        if (typeof syncSnakeOutlines === "function") {
+          syncSnakeOutlines();
+          setTimeout(syncSnakeOutlines, 50);
+        }
+        document
+          .getElementById("projects")
+          .scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+
+      function backToProjectList() {
+        listView.style.display = "block";
+        detailView.classList.remove("active");
+        detailView.style.display = "none";
+        window.scrollTo({
+          top: document.getElementById("projects").offsetTop - 100,
+          behavior: "smooth",
+        });
+      }
+
+      backBtn.addEventListener("click", backToProjectList);
+
+      filterBtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          filterBtns.forEach((b) => {
+            b.classList.remove("tab-active");
+            b.style.color = "var(--text-lo)";
+          });
+          btn.classList.add("tab-active");
+          btn.style.color = "";
+          renderProjects(btn.dataset.filter);
+        });
+      });
+
+      renderProjects("all");
+      lucide.createIcons();
+
+      // ====== SNAKE TRACE BORDER: pixel-exact sizing ======
+      // Measures each .btn-trace button's real rendered box and sets the
+      // SVG rect's x/y/width/height/rx directly in pixels, so the traced
+      // outline always matches the button exactly regardless of text length,
+      // padding, or responsive breakpoint (fixes drift from % / calc() sizing).
+      function syncSnakeOutlines() {
+        document.querySelectorAll(".btn-trace").forEach((btn) => {
+          const svg = btn.querySelector("svg.snake-outline");
+          const rect = svg && svg.querySelector("rect");
+          if (!svg || !rect) return;
+          const w = btn.clientWidth;
+          const h = btn.clientHeight;
+          if (!w || !h) return;
+          svg.setAttribute("viewBox", `0 0 ${w} ${h}`);
+          svg.removeAttribute("width");
+          svg.removeAttribute("height");
+          const inset = 1;
+          const rw = Math.max(0, w - inset * 2);
+          const rh = Math.max(0, h - inset * 2);
+          const radius = Math.min(999, rh / 2);
+          rect.setAttribute("x", inset);
+          rect.setAttribute("y", inset);
+          rect.setAttribute("width", rw);
+          rect.setAttribute("height", rh);
+          rect.setAttribute("rx", radius);
+          rect.setAttribute("ry", radius);
+        });
+      }
+      syncSnakeOutlines();
+      // re-measure after fonts/icons finish laying out, and on resize
+      window.addEventListener("load", syncSnakeOutlines);
+      window.addEventListener("resize", syncSnakeOutlines);
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(syncSnakeOutlines);
+      }
+      setTimeout(syncSnakeOutlines, 300);
+
+      // ====== MOBILE MENU ======
+      const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+      const navLinks = document.getElementById("navLinks");
+      const menuIconOpen = document.getElementById("menuIconOpen");
+      const menuIconClose = document.getElementById("menuIconClose");
+      mobileMenuBtn.addEventListener("click", () => {
+        navLinks.classList.toggle("open");
+        menuIconOpen.classList.toggle("hidden");
+        menuIconClose.classList.toggle("hidden");
+      });
+      navLinks.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          if (navLinks.classList.contains("open")) {
+            navLinks.classList.remove("open");
+            menuIconOpen.classList.remove("hidden");
+            menuIconClose.classList.add("hidden");
+          }
+        });
+      });
+
+      // ====== SCROLL PROGRESS ======
+      function updateScrollProgress() {
+        const doc = document.documentElement;
+        const scrolled =
+          (doc.scrollTop / (doc.scrollHeight - doc.clientHeight)) * 100;
+        document.getElementById("scrollProgress").style.width = scrolled + "%";
+      }
+      window.addEventListener("scroll", updateScrollProgress);
+
+      // ====== ANIMATED COUNTERS ======
+      function animateCounter(el) {
+        const target = parseFloat(el.dataset.target);
+        const suffix = el.dataset.suffix || "";
+        const duration = 1200;
+        const start = performance.now();
+        function tick(now) {
+          const progress = Math.min((now - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          const value = Math.round(target * eased);
+          el.textContent = value + suffix;
+          if (progress < 1) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+      }
+
+      const counterObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              animateCounter(entry.target);
+              counterObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.5 },
+      );
+      document
+        .querySelectorAll(".js-counter")
+        .forEach((el) => counterObserver.observe(el));
+
+      const skillObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.querySelectorAll(".fill").forEach((bar) => {
+                bar.style.width = bar.dataset.level + "%";
+              });
+              skillObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.3 },
+      );
+      document.getElementById("skillsData") &&
+        skillObserver.observe(document.getElementById("skillsData"));
+      document.getElementById("skillsDev") &&
+        skillObserver.observe(document.getElementById("skillsDev"));
+
+      // ====== SCROLL REVEAL ======
+      function isElementInViewport(el) {
+        const rect = el.getBoundingClientRect();
+        const windowHeight =
+          window.innerHeight || document.documentElement.clientHeight;
+        return rect.top < windowHeight - 100;
+      }
+      function handleScrollReveal() {
+        document
+          .querySelectorAll(
+            ".reveal, .reveal-left, .reveal-right, .reveal-scale, .stagger",
+          )
+          .forEach((el) => {
+            if (isElementInViewport(el)) el.classList.add("visible");
+          });
+      }
+      setTimeout(handleScrollReveal, 200);
+      window.addEventListener("scroll", handleScrollReveal);
+      window.addEventListener("resize", handleScrollReveal);
+
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            if (
+              detailView.classList.contains("active") &&
+              this.id !== "navProjects"
+            ) {
+              backToProjectList();
+              setTimeout(
+                () =>
+                  target.scrollIntoView({ behavior: "smooth", block: "start" }),
+                300,
+              );
+            } else {
+              target.scrollIntoView({ behavior: "smooth", block: "start" });
+            }
+          }
+        });
+      });
+
+      document
+        .getElementById("navProjects")
+        .addEventListener("click", function (e) {
+          e.preventDefault();
+          if (detailView.classList.contains("active")) backToProjectList();
+          else
+            document
+              .getElementById("projects")
+              .scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+    </script>
+  </body>
+</html>
