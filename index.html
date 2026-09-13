@@ -1823,9 +1823,8 @@
               together
             </a>
             <a
-              href="https://mail.google.com/mail/?view=cm&fs=1&to=mazenemad10000@gmail.com&su=Hello%20Mazen"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="mailto:mazenemad10000@gmail.com?subject=Hello%20Mazen"
+              onclick="return openMailLink(event, 'https://mail.google.com/mail/?view=cm&fs=1&to=mazenemad10000@gmail.com&su=Hello%20Mazen')"
               class="btn-outline-neon btn-trace btn-shine px-8 py-3 rounded-full text-sm border transition flex items-center gap-2"
               style="color: var(--text-mid); border-color: var(--border)"
             >
@@ -1908,9 +1907,8 @@
             ><i class="fa-brands fa-linkedin-in"></i> LinkedIn</a
           >
           <a
-            href="https://mail.google.com/mail/?view=cm&fs=1&to=mazenemad10000@gmail.com"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="mailto:mazenemad10000@gmail.com"
+            onclick="return openMailLink(event, 'https://mail.google.com/mail/?view=cm&fs=1&to=mazenemad10000@gmail.com')"
             class="hover:text-white transition flex items-center gap-1"
             ><i data-lucide="mail" class="w-4 h-4"></i> Email</a
           >
@@ -1925,6 +1923,19 @@
     </footer>
 
     <script>
+      // // ====== EMAIL BUTTONS ======
+      function openMailLink(event, gmailWebUrl) {
+        const isMobile = /Android|iPhone|iPad|iPod/i.test(
+          navigator.userAgent,
+        );
+        if (isMobile) {
+          return true; // let the mailto: href handle it
+        }
+        event.preventDefault();
+        window.open(gmailWebUrl, "_blank");
+        return false;
+      }
+
       // ====== PROJECT DATA ======
       const categoryLabels = {
         all: "All",
