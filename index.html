@@ -1824,8 +1824,7 @@
             </a>
             <a
               href="https://mail.google.com/mail/?view=cm&fs=1&to=mazenemad10000@gmail.com&su=Hello%20Mazen"
-              target="_blank"
-              rel="noopener noreferrer"
+              onclick="return openGmailCompose(event, 'Hello Mazen')"
               class="btn-outline-neon btn-trace btn-shine px-8 py-3 rounded-full text-sm border transition flex items-center gap-2"
               style="color: var(--text-mid); border-color: var(--border)"
             >
@@ -1909,8 +1908,7 @@
           >
           <a
             href="https://mail.google.com/mail/?view=cm&fs=1&to=mazenemad10000@gmail.com"
-            target="_blank"
-            rel="noopener noreferrer"
+            onclick="return openGmailCompose(event, '')"
             class="hover:text-white transition flex items-center gap-1"
             ><i data-lucide="mail" class="w-4 h-4"></i> Email</a
           >
@@ -1925,6 +1923,30 @@
     </footer>
 
     <script>
+      // ====== EMAIL BUTTONS ======
+      function openGmailCompose(event, subject) {
+        const to = "mazenemad10000@gmail.com";
+        const su = encodeURIComponent(subject || "");
+        const webUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${to}&su=${su}`;
+        const isMobile = /Android|iPhone|iPad|iPod/i.test(
+          navigator.userAgent,
+        );
+
+        if (!isMobile) {
+          return true; // let the normal href (webUrl) handle desktop
+        }
+
+        event.preventDefault();
+        const appUrl = `googlegmail:///co?to=${to}&subject=${su}`;
+        const openedAt = Date.now();
+        window.location.href = appUrl;
+        setTimeout(() => {
+          if (Date.now() - openedAt < 1800 && !document.hidden) {
+            window.location.href = webUrl;
+          }
+        }, 1200);
+        return false;
+      }
       // ====== PROJECT DATA ======
       const categoryLabels = {
         all: "All",
@@ -2301,11 +2323,6 @@
       renderProjects("all");
       lucide.createIcons();
 
-      // ====== SNAKE TRACE BORDER: pixel-exact sizing ======
-      // Measures each .btn-trace button's real rendered box and sets the
-      // SVG rect's x/y/width/height/rx directly in pixels, so the traced
-      // outline always matches the button exactly regardless of text length,
-      // padding, or responsive breakpoint (fixes drift from % / calc() sizing).
       function syncSnakeOutlines() {
         document.querySelectorAll(".btn-trace").forEach((btn) => {
           const svg = btn.querySelector("svg.snake-outline");
