@@ -1824,7 +1824,8 @@
             </a>
             <a
               href="https://mail.google.com/mail/?view=cm&fs=1&to=mazenemad10000@gmail.com&su=Hello%20Mazen"
-              onclick="return openGmailCompose(event, 'Hello Mazen')"
+              target="_blank"
+              rel="noopener noreferrer"
               class="btn-outline-neon btn-trace btn-shine px-8 py-3 rounded-full text-sm border transition flex items-center gap-2"
               style="color: var(--text-mid); border-color: var(--border)"
             >
@@ -1908,7 +1909,8 @@
           >
           <a
             href="https://mail.google.com/mail/?view=cm&fs=1&to=mazenemad10000@gmail.com"
-            onclick="return openGmailCompose(event, '')"
+            target="_blank"
+            rel="noopener noreferrer"
             class="hover:text-white transition flex items-center gap-1"
             ><i data-lucide="mail" class="w-4 h-4"></i> Email</a
           >
@@ -1923,21 +1925,6 @@
     </footer>
 
     <script>
-      // ====== EMAIL BUTTONS ======
-      function openGmailCompose(event, subject) {
-        const isMobile = /Android|iPhone|iPad|iPod/i.test(
-          navigator.userAgent,
-        );
-        if (!isMobile) {
-          return true; // let the normal href (Gmail web link) handle desktop
-        }
-        event.preventDefault();
-        const to = "mazenemad10000@gmail.com";
-        const su = encodeURIComponent(subject || "");
-        window.location.href = `mailto:${to}${su ? `?subject=${su}` : ""}`;
-        return false;
-      }
-      
       // ====== PROJECT DATA ======
       const categoryLabels = {
         all: "All",
